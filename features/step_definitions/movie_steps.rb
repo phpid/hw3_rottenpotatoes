@@ -37,3 +37,7 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     end
   end
 end
+
+Then /I should see all movies$/ do
+  assert Movie.count.should == 10
+end
