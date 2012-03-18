@@ -26,4 +26,14 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+
+  # map to checkbox id like 'ratings_PG'
+  rating_list.split(', ').each do |r|
+    r_id = "ratings_"+r.to_s
+    if uncheck
+      step %Q{I uncheck "#{r_id}"}
+    else
+      step %Q{I check "#{r_id}"}
+    end
+  end
 end
